@@ -1,4 +1,17 @@
-<label for="username">UserName:</label><input type="text" name="username" [(ngModel)]="username">
-<label for="password">Password:</label>
-<input type="password" name="password" [(ngModel)]="password">
-<button (click)="loginHandler()">Login</button>
+<div class="container">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Username</span><input type="text" name="username" class="form-control" [(ngModel)]="username">
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Password</span><input type="password" name="password" class="form-control" [(ngModel)]="password">
+            <br>
+        </div>
+    </div>
+        <button (click)="loginHandler()" class="btn btn-primary">Login</button>
+    <div id="result">
+        <div class="alert" *ngIf='invalidUser' style="color: red;">Invalid user</div>
+    </div>
+</div>

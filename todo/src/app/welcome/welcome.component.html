@@ -1,1 +1,9 @@
-<p>welcome works!</p>
+<div class="container">
+    <p>welcome {{username}}!</p>
+    <!-- <a routerLink='/todos'>TO DO'S</a> -->
+    <Button class="btn btn-primary" (click)='getTodos()'>Toggle Todos</Button>
+    <br>
+    <br>
+    <br>
+    <app-todo-app *ngIf='showTodo'></app-todo-app>
+</div>

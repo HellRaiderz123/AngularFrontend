@@ -1,0 +1,16 @@
+<h1>My Todo's</h1>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor='let todo of todos'>
+            <td>{{todo.id}}</td>
+            <td>{{todo.desc}}</td>
+        </tr>
+    </tbody>
+</table>
