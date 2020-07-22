@@ -1,12 +1,10 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" routerLink="#">HellRaider</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" routerLink="/#">HellRaider</a>
+        </div>
+        <ul class="navbar-nav" *ngIf="this.harcodedAuthServiceService.isAuthenticated()">
           <li class="nav-item active">
             <a class="nav-link" routerLink="/welcome/developer">Home <span class="sr-only">(current)</span></a>
           </li>
@@ -25,10 +23,10 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <a routerLink="/login" ><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button></a>&nbsp;
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a routerLink="/login" ><button button *ngIf="!this.harcodedAuthServiceService.isAuthenticated()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button></a>&nbsp;</li>
+          <li><a routerLink="/logout" ><button *ngIf="this.harcodedAuthServiceService.isAuthenticated()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button></a>&nbsp;</li>
+        </ul>
       </div>
     </nav>
   </header>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HarcodedAuthServiceService } from '../services/harcoded-auth-service.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  //isAuthenticated : boolean = false;
+
+  constructor(public harcodedAuthServiceService: HarcodedAuthServiceService ) { }
 
   ngOnInit(): void {
+    //this.isAuthenticated = this.harcodedAuthServiceService.isAuthenticated();
   }
 
+  
 }

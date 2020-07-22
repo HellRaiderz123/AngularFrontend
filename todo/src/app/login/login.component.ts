@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HarcodedAuthServiceService } from '../services/harcoded-auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,9 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   //Dependecy Injecttion of Router
-  constructor(private route: Router) { }
+  constructor(
+    private route: Router,
+    public harcodedAuthServiceService: HarcodedAuthServiceService) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +23,7 @@ export class LoginComponent implements OnInit {
   
   loginHandler() {
     // console.log(this.username);
-    if(this.username==='developer' && this.password==='pass') {
+    if(this.harcodedAuthServiceService.authenticate(this.username, this.password)) {
       this.invalidUser = false;
       //Logic to redirect to welcome page
       this.route.navigate(['welcome',this.username]);

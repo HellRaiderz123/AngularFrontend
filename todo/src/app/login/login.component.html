@@ -11,7 +11,9 @@
         </div>
     </div>
         <button (click)="loginHandler()" class="btn btn-primary">Login</button>
+        <br>
+        <br>
     <div id="result">
-        <div class="alert" *ngIf='invalidUser' style="color: red;">Invalid user</div>
+        <div class="alert alert-danger" role="alert" *ngIf='invalidUser' style="color: red;">Invalid user</div>
     </div>
 </div>

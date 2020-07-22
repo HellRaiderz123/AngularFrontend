@@ -2,15 +2,19 @@
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">ID</th>
             <th scope="col">Description</th>
+            <th scope="col">Target Date</th>
+            <th scope="col">is it Done?</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
 
     <tbody>
         <tr *ngFor='let todo of todos'>
-            <td>{{todo.id}}</td>
             <td>{{todo.desc}}</td>
+            <td>{{todo.PendingTill | date | uppercase}}</td>
+            <td>{{todo.isComp}}</td>
+            <td><button class="btn btn-primary">Update</button>&nbsp;<button class="btn btn-danger">Delete</button></td>
         </tr>
     </tbody>
 </table>

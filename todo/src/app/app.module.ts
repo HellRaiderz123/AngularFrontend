@@ -10,6 +10,7 @@ import { ErrorComponent } from './error/error.component';
 import { TodoAppComponent } from './todo-app/todo-app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FooterComponent } from './footer/footer.component';
     ErrorComponent,
     TodoAppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
