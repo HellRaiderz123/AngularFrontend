@@ -8,6 +8,7 @@ export class HarcodedAuthServiceService {
   constructor() { }
 
   authenticate(username : string, password : string) : boolean{
+    //console.log(username + " ------- " + password);
     if(username==='developer' && password==='pass') {
       sessionStorage.setItem('authenticatedUser',username);
       return true;

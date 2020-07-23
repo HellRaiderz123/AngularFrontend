@@ -1,19 +1,23 @@
 <div class="container">
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Username</span><input type="text" name="username" class="form-control" [(ngModel)]="username">
+    <form name="login-form">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Username</label>
+          <input [(ngModel)]="username" name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Password</span><input type="password" name="password" class="form-control" [(ngModel)]="password">
-            <br>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input [(ngModel)]="password" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
-    </div>
-        <button (click)="loginHandler()" class="btn btn-primary">Login</button>
-        <br>
-        <br>
-    <div id="result">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" (click)="loginHandler()" class="btn btn-primary">Login</button>
+      </form>
+      <br>
+      <br>
+      <div id="result">
         <div class="alert alert-danger" role="alert" *ngIf='invalidUser' style="color: red;">Invalid user</div>
     </div>
 </div>
