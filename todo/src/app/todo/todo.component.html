@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>TODO</h1>
+    <form>
+        <div class="form-group row">
+            <label for="desc" class="col-sm-2 col-form-label">Discription</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="desc" [(ngModel)]='desc' name="desc">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="targetDate" class="col-sm-2 col-form-label">Target Date</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="targetDate" [ngModel]='targetDate | date:"yyyy-MM-dd"'  (ngModelChange) = "targetDate = $event" name="targetDate">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="isComp" class="col-sm-2 col-form-label">isCompleted?</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="isComp" [(ngModel)]='isComp'name="isComp">
+            </div>
+        </div>
+        <div class="form-group row"></div>
+        <div class="form-group row">
+            <button class="btn btn-success" (click)='updateTodo()'>Submit</button>&nbsp;
+            <a routerLink='/todos'><button class="btn btn-danger" >Cancel</button></a>
+        </div>
+    </form>
+</div>

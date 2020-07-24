@@ -1,16 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SpringBootDataServiceService, AppTodo, AppTodos } from '../services/data/spring-boot-data-service.service';
+import { Router } from '@angular/router';
 
-
-export class Todo {
-
-  constructor (
-    public id : number,
-    public desc : string,
-    public PendingTill : Date,
-    public isComp : boolean
-  ) {}
-
-}
 
 @Component({
   selector: 'app-todo-app',
@@ -20,15 +11,33 @@ export class Todo {
 
 export class TodoAppComponent implements OnInit {
 
-  todos = [
-    new Todo(1,'Buy Vegies', new Date(), false),
-    new Todo(2,'Buy Vegies', new Date(), false),
-    new Todo(3,'Buy Vegies', new Date(), false)
-  ]
+  todos: AppTodo[];
 
-  constructor() { }
+  constructor( private todoBean: SpringBootDataServiceService, private route: Router) { }
 
   ngOnInit(): void {
+    //console.log(this.welcomeComp.username);
+    //Calling service to get Todos
+    this.todoBean.getTodoBean().subscribe(
+     response => this.updateTodoList(response.alTodoList)
+    );
+  }
+
+  updateTodoList(todos: Array<AppTodo>) {
+    this.todos = todos;
+  }
+
+  deleteId(event) {
+    //console.log(event.target.id);
+    //Calling delete service here
+    this.todoBean.deleteTodoBean(event.target.id).subscribe(
+      response => this.ngOnInit(),
+      error => this.ngOnInit()
+    )
+  }
+
+  updateId(id: number) {
+    this.route.navigate(['todo',id])
   }
 
 }
