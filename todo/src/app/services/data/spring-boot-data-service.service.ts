@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class HelloWorld {
   constructor(public message: string) {}
@@ -27,6 +27,9 @@ export class SpringBootDataServiceService {
   constructor(private http: HttpClient) { }
 
   getHelloWorldBean(username: string) {
+    // let EncodedAuth = this.basicAuthHeaderEncoding();
+    // let headers = new HttpHeaders({Authorization : EncodedAuth})
+    // return this.http.get<HelloWorld>('http://localhost:8080/hello/'+username, {headers});
     return this.http.get<HelloWorld>('http://localhost:8080/hello/'+username);
   }
 
@@ -44,5 +47,16 @@ export class SpringBootDataServiceService {
 
   updateTodoById(todo: AppTodo) {
     return this.http.post('http://hellraider.zone:8080/todo/update', todo);
+  }
+
+  insertTodo(todo: AppTodo) {
+    return this.http.post('http://hellraider.zone:8080/todo/insert', todo);
+  }
+
+  basicAuthHeaderEncoding() : string{
+    let username = 'developer';
+    let password = 'pass';
+    let encodedAuthHeader: string = 'Basic ' + window.btoa(username + ':' + password);
+    return encodedAuthHeader;
   }
 }

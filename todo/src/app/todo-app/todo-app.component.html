@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container collapsable">
     <h1>My Todo's</h1>
     <table class="table table-striped">
         <thead class="thead-dark">
@@ -19,6 +19,15 @@
                     <button id={{todo.id}} (click)="updateId(todo.id)" class="btn btn-primary todo_update_button">Update</button>&nbsp;
                     <button id={{todo.id}} (click)="deleteId($event)"
                         class="btn btn-danger todo_delete_btn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td><input name="desc" type="text" [(ngModel)] = "desc" class="form-control" required></td>
+                <td><input name="pendingTill" type="date" [(ngModel)] = "pendingTill" class="form-control" required></td>
+                <td><input name="comp" type="text" [(ngModel)] = "comp" class="form-control" required></td>
+                <td>
+                    <button class="btn btn-success" (click)="insertTodo()">Add</button>&nbsp;
+                    <button class="btn btn-danger" (click)="clearValues()">Clear</button>
                 </td>
             </tr>
         </tbody>

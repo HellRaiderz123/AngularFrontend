@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HarcodedAuthServiceService } from '../services/harcoded-auth-service.service';
+import { BasicAuthService } from '../services/basic-auth.service';
 
 @Component({
   selector: 'app-logout',
@@ -8,10 +9,14 @@ import { HarcodedAuthServiceService } from '../services/harcoded-auth-service.se
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(public harcodedAuthServiceService: HarcodedAuthServiceService) { }
+  constructor(
+    // public harcodedAuthServiceService: HarcodedAuthServiceService
+    public basicAuthService : BasicAuthService
+    ) { }
 
   ngOnInit(): void {
-    this.harcodedAuthServiceService.logout();
+    // this.harcodedAuthServiceService.logout();
+    this.basicAuthService.logout();
   }
 
 }

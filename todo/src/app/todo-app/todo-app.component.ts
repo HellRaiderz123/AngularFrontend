@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpringBootDataServiceService, AppTodo, AppTodos } from '../services/data/spring-boot-data-service.service';
 import { Router } from '@angular/router';
+import { VirtualTimeScheduler } from 'rxjs';
 
 
 @Component({
@@ -12,6 +13,10 @@ import { Router } from '@angular/router';
 export class TodoAppComponent implements OnInit {
 
   todos: AppTodo[];
+
+  desc: string;
+  pendingTill: Date;
+  comp: boolean;
 
   constructor( private todoBean: SpringBootDataServiceService, private route: Router) { }
 
@@ -39,5 +44,26 @@ export class TodoAppComponent implements OnInit {
   updateId(id: number) {
     this.route.navigate(['todo',id])
   }
+
+  insertTodo() {
+    //Check condition
+    if(this.desc==undefined || this.desc.length===0) {
+      alert("Please enter the Description of Todo");
+      return false;
+    }
+    let todo: AppTodo = {"comp": this.comp, "desc" : this.desc, "pendingTill" : this.pendingTill, "id" : 0};
+    todo.desc = this.desc;
+    todo.comp = this.comp;
+    todo.pendingTill = this.pendingTill;
+    this.todoBean.insertTodo(todo).subscribe(
+      response => this.ngOnInit(),
+      error => this.ngOnInit()
+    );
+  console.log(todo);
+   }
+
+   clearValues() {
+
+   }
 
 }

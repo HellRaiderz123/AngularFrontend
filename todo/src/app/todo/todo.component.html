@@ -1,16 +1,17 @@
 <div class="container">
     <h1>TODO</h1>
-    <form>
+    <div class="alert alert-warning" *ngIf="todoForm.invalid">Please enter valid values</div>
+    <form (ngSubmit) = "!todoForm.invalid && updateTodo()" #todoForm = "ngForm">
         <div class="form-group row">
             <label for="desc" class="col-sm-2 col-form-label">Discription</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="desc" [(ngModel)]='desc' name="desc">
+                <input type="text" class="form-control" id="desc" [(ngModel)]='desc' name="desc" required="required">
             </div>
         </div>
         <div class="form-group row">
             <label for="targetDate" class="col-sm-2 col-form-label">Target Date</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" id="targetDate" [ngModel]='targetDate | date:"yyyy-MM-dd"'  (ngModelChange) = "targetDate = $event" name="targetDate">
+                <input type="date" class="form-control" id="targetDate" [ngModel]='targetDate | date:"yyyy-MM-dd"'  (ngModelChange) = "targetDate = $event" name="targetDate" required="required">
             </div>
         </div>
         <div class="form-group row">
@@ -21,7 +22,7 @@
         </div>
         <div class="form-group row"></div>
         <div class="form-group row">
-            <button class="btn btn-success" (click)='updateTodo()'>Submit</button>&nbsp;
+            <input type="submit" class="btn btn-success">&nbsp;
             <a routerLink='/todos'><button class="btn btn-danger" >Cancel</button></a>
         </div>
     </form>

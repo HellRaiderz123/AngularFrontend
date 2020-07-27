@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HarcodedAuthServiceService } from '../services/harcoded-auth-service.service';
+import { BasicAuthService } from '../services/basic-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   //Dependecy Injecttion of Router
   constructor(
     private route: Router,
-    public harcodedAuthServiceService: HarcodedAuthServiceService) { }
+    public harcodedAuthServiceService: HarcodedAuthServiceService,
+    public basicAuthService : BasicAuthService) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +32,24 @@ export class LoginComponent implements OnInit {
     } else {
       this.invalidUser = true;
     }
+  }
+
+
+  basicAuthLoginHandler() {
+    console.log(this.username);
+    this.basicAuthService.authenticate(this.username, this.password).subscribe(
+      data => {
+        console.log(data)
+        this.invalidUser = false
+        this.route.navigate(['welcome',this.username])
+      }, 
+
+      error => {
+        console.log(error)
+        this.invalidUser = true;
+      }
+    )
+    
   }
 
 }

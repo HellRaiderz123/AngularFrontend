@@ -1,5 +1,6 @@
 <div class="container">
     <form name="login-form">
+      <h1>Login!</h1>
         <div class="form-group">
           <label for="exampleInputEmail1">Username</label>
           <input [(ngModel)]="username" name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
@@ -13,7 +14,8 @@
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
-        <button type="submit" (click)="loginHandler()" class="btn btn-primary">Login</button>
+        <!-- <button type="submit" (click)="loginHandler()" class="btn btn-primary">Login</button> -->
+        <button type="submit" (click)="basicAuthLoginHandler()" class="btn btn-primary">Login</button>
       </form>
       <br>
       <br>
