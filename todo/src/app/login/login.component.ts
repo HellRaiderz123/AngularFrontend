@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   //Dependecy Injecttion of Router
   constructor(
     private route: Router,
-    public harcodedAuthServiceService: HarcodedAuthServiceService,
+    // public harcodedAuthServiceService: HarcodedAuthServiceService,
     public basicAuthService : BasicAuthService) { }
 
   ngOnInit(): void {
@@ -23,16 +23,16 @@ export class LoginComponent implements OnInit {
   password : string = "";
   invalidUser = false;
   
-  loginHandler() {
-    // console.log(this.username);
-    if(this.harcodedAuthServiceService.authenticate(this.username, this.password)) {
-      this.invalidUser = false;
-      //Logic to redirect to welcome page
-      this.route.navigate(['welcome',this.username]);
-    } else {
-      this.invalidUser = true;
-    }
-  }
+  // loginHandler() {
+  //   // console.log(this.username);
+  //   if(this.harcodedAuthServiceService.authenticate(this.username, this.password)) {
+  //     this.invalidUser = false;
+  //     //Logic to redirect to welcome page
+  //     this.route.navigate(['welcome',this.username]);
+  //   } else {
+  //     this.invalidUser = true;
+  //   }
+  // }
 
 
   basicAuthLoginHandler() {

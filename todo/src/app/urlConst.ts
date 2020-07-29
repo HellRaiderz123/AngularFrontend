@@ -1,1 +1,1 @@
-export const APP_URL = 'http://localhost:8080/';
+export const APP_URL = 'http://18.216.189.245:8080/';

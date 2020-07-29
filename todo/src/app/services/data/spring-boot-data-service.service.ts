@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { APP_URL } from 'src/app/urlConst';
 
 export class HelloWorld {
   constructor(public message: string) {}
@@ -29,28 +30,28 @@ export class SpringBootDataServiceService {
   getHelloWorldBean(username: string) {
     // let EncodedAuth = this.basicAuthHeaderEncoding();
     // let headers = new HttpHeaders({Authorization : EncodedAuth})
-    // return this.http.get<HelloWorld>('http://localhost:8080/hello/'+username, {headers});
-    return this.http.get<HelloWorld>('http://localhost:8080/hello/'+username);
+    // return this.http.get<HelloWorld>(APP_URL+'hello/'+username, {headers});
+    return this.http.get<HelloWorld>(APP_URL+'hello/'+username);
   }
 
   getTodoBean() {
-    return this.http.get<AppTodos>('http://localhost:8080/todos');
+    return this.http.get<AppTodos>(APP_URL+'todos');
   }
 
   getTodoWithIdBean(id: number) {
-    return this.http.get<AppTodo>('http://localhost:8080/todo/'+id);
+    return this.http.get<AppTodo>(APP_URL+'todo/'+id);
   }
 
   deleteTodoBean(id: number) {
-    return this.http.delete('http://localhost:8080/todo/delete/'+id);
+    return this.http.delete(APP_URL+'todo/delete/'+id);
   }
 
   updateTodoById(todo: AppTodo) {
-    return this.http.post('http://hellraider.zone:8080/todo/update', todo);
+    return this.http.post(APP_URL+'todo/update', todo);
   }
 
   insertTodo(todo: AppTodo) {
-    return this.http.post('http://hellraider.zone:8080/todo/insert', todo);
+    return this.http.post(APP_URL+'todo/insert', todo);
   }
 
   basicAuthHeaderEncoding() : string{
